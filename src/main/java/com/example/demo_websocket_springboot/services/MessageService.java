@@ -1,4 +1,4 @@
-package com.example.demo_websocket_springboot.service;
+package com.example.demo_websocket_springboot.services;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.HtmlUtils;
