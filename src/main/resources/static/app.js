@@ -5,6 +5,13 @@ const stompClient = new StompJs.Client({
 stompClient.onConnect = (frame) => {
     setConnected(true);
     console.log(`Connected: ${frame}`);
+
+
+    // Fetch messages
+    fetch("http://localhost:8080/api/messages")
+        .then(response => response.json())
+        .then(listMessages => listMessages.forEach(listItemMessage => showGreeting(listItemMessage.content)));
+
     stompClient.subscribe("/topic/messages", (greeting) => {
         showGreeting(JSON.parse(greeting.body).content);
     })

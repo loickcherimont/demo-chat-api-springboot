@@ -1,5 +1,7 @@
 package com.example.demo_websocket_springboot.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
@@ -14,11 +16,13 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MessageController {
 
+    private Logger logger = LoggerFactory.getLogger(MessageController.class);
     private final MessageService messageService;
 
     @MessageMapping("/chat")
     @SendTo("/topic/messages")
-    public Greeting greeting(Message message) throws Exception {
-        return messageService.getGreetingMessage(message);
+    public Greeting handleMessage(Message message) throws Exception {
+        Message newMessage = messageService.saveMessage(message);
+        return messageService.getGreetingMessage(newMessage);
     }
 }
