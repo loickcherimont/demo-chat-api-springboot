@@ -15,7 +15,7 @@ class MessageServiceTest {
     void shouldReturnANewGreetingObjectWithEscapedHtml() throws Exception {
 
         // GIVEN
-        Message message = new Message("<b>John</b>");
+        Message message = new Message(1L, "<b>John</b>");
 
         // WHEN
         Greeting result = messageService.getGreetingMessage(message);

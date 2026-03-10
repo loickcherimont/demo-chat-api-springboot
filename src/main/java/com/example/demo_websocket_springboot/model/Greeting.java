@@ -9,4 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Greeting {
     private String content;
+
+    @Override
+    public String toString() {
+        return String.format("Greeting{ content: '%s%' }", content);
+    }
 }
