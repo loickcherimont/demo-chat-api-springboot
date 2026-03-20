@@ -51,6 +51,9 @@ function sendName() {
         destination: "/app/chat",
         body: JSON.stringify({ 'name': document.getElementById("name").value}),
     });
+
+    // Reset all fields after submission
+    document.getElementById("form").reset();
 }
 
 function showGreeting(message) {
