@@ -29,9 +29,17 @@ public class SecurityConfig {
         return http
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(auth -> auth
-                // .requestMatchers("/api/auth/**", "/chat").permitAll()
-                // .anyRequest().authenticated()
-                .anyRequest().permitAll()
+                .requestMatchers(
+                    "/",
+                    "/index.html",
+                    "/app.js",
+                    "/auth-form",
+                    "/api/auth/**",
+                    "/chat-app/**",
+                    "/error",
+                    "/favicon.ico"
+                ).permitAll()
+                .anyRequest().authenticated()
             )
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authenticationProvider(authenticationProvider)
