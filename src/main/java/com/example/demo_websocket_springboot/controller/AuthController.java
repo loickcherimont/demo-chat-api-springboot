@@ -37,6 +37,10 @@ public class AuthController {
         return ResponseEntity.ok(authService.signin(dto));
     }
 
+    /**
+     * 
+     * How does it run ?
+     */
     @GetMapping("/token")
     public ResponseEntity<Map<String, String>> getSessionToken(HttpSession session) {
         Object sessionToken = session.getAttribute("JWT_TOKEN");
