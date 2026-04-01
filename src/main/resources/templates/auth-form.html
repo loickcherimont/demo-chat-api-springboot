@@ -3,18 +3,80 @@
 
 <head>
     <title>AuthForm</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
-    <h1>Authentification</h1>
-    <p th:if="${error}" th:text="${error}" style="color: red;"></p>
-    <form action="#" th:action="@{/auth-form}" th:object="${authForm}" method="post">
-        <p>Username: <input type="text" th:field="*{username}" required /></p>
-        <p>Password: <input type="password" th:field="*{password}" required /></p>
-        <p><input type="submit" value="Se connecter" /> <input type="reset" value="Reset" /></p>
-    </form>
+<body class="bg-light">
+
+    <div class="container py-5">
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-6 col-lg-5">
+
+                <div class="card shadow-sm rounded-4">
+
+                    <div class="card-body">
+
+                        <h3 class="text-center mb-4">
+                            🔐 Authentification
+                        </h3>
+
+                        <p th:if="${error}" th:text="${error}" class="alert alert-danger text-center">
+                        </p>
+
+                        <form method="POST" id="authForm" class="d-grid gap-3">
+
+                            <div>
+
+                                <label class="form-label">
+                                    Username
+                                </label>
+
+                                <input type="text" name="username" class="form-control" required />
+
+                            </div>
+
+                            <div>
+
+                                <label class="form-label">
+                                    Password
+                                </label>
+
+                                <input type="password" name="password" class="form-control" required />
+
+                            </div>
+
+                            <div class="d-grid gap-2 mt-2">
+
+                                <button type="submit" class="btn btn-primary">
+                                    Se connecter
+                                </button>
+
+                                <button type="reset" class="btn btn-outline-secondary">
+                                    Reset
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script th:src="@{/auth.js}"></script>
+
 </body>
 
 </html>
