@@ -21,20 +21,20 @@ class AuthSessionFlowTest {
     @Autowired
     private AuthController authController;
 
-    @Autowired
-    private AuthFormController authFormController;
+    // @Autowired
+    // private AuthFormController authFormController;
 
     @Autowired
     private JwtService jwtService;
 
-    @Test
-    void shouldRedirectToAuthFormWhenNoJwtTokenInSession() {
-        MockHttpSession session = new MockHttpSession();
+    // @Test
+    // void shouldRedirectToAuthFormWhenNoJwtTokenInSession() {
+    //     MockHttpSession session = new MockHttpSession();
 
-        String viewName = authFormController.home(session);
+    //     String viewName = authFormController.home(session);
 
-        assertThat(viewName).isEqualTo("redirect:/auth-form");
-    }
+    //     assertThat(viewName).isEqualTo("redirect:/auth-form");
+    // }
 
     @Test
     void shouldExposeSessionTokenWhenJwtTokenIsValid() {

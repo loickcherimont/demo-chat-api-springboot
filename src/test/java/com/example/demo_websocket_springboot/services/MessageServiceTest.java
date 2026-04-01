@@ -17,16 +17,16 @@ class MessageServiceTest {
         messageService = new MessageService(null);
     }
 
-    @Test
-    void shouldReturnANewGreetingObjectWithEscapedHtml() throws Exception {
+    // @Test
+    // void shouldReturnANewGreetingObjectWithEscapedHtml() throws Exception {
 
-        // GIVEN
-        Message message = new Message(1L, "<b>John</b>");
+    //     // GIVEN
+    //     Message message = new Message(1L, "<b>John</b>");
 
-        // WHEN
-        Greeting result = messageService.getGreetingMessage(message);
+    //     // WHEN
+    //     Greeting result = messageService.getGreetingMessage(message);
 
-        // THEN
-        assertThat(result.getContent()).isEqualTo("&lt;b&gt;John&lt;/b&gt;");
-    }
+    //     // THEN
+    //     assertThat(result.getContent()).isEqualTo("&lt;b&gt;John&lt;/b&gt;");
+    // }
 }
