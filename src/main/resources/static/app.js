@@ -7,18 +7,14 @@ const stompClient = new StompJs.Client({
 });
 
 stompClient.beforeConnect = async () => {
-    jwtToken = await fetchJwtToken();
+    jwtToken = localStorage.getItem("CUSTOM_JWT_TOKEN");
     stompClient.connectHeaders = {
         Authorization: `Bearer ${jwtToken}`,
     };
 };
 
-stompClient.onConnect = async (frame) => {
-    setConnected(true);
-    console.log(`Connected: ${frame.command ?? "STOMP"}`);
-
+stompClient.onConnect = async () => {
     await loadMessages();
-
     stompClient.subscribe("/topic/messages", (greeting) => {
         showGreeting(JSON.parse(greeting.body).content);
     });
@@ -34,16 +30,9 @@ stompClient.onStompError = (frame) => {
     redirectToAuthForm();
 };
 
-function setConnected(connected) {
-    document.getElementById("connect").disabled = connected;
-    document.getElementById("disconnect").disabled = !connected;
-    document.getElementById("conversation").style.display = connected ? "block" : "none";
-    document.getElementById("messages").innerHTML = "";
-}
-
 async function connect() {
     try {
-        await ensureAuthenticated();
+        // await ensureAuthenticated();
 
         if (!stompClient.active) {
             stompClient.activate();
@@ -55,9 +44,12 @@ async function connect() {
 }
 
 function disconnect() {
+    stompClient.connectHeaders = {
+        Authorization: null,
+    };
+    localStorage.removeItem("CUSTOM_JWT_TOKEN");
     stompClient.deactivate();
-    setConnected(false);
-    console.log("Disconnected");
+    redirectToAuthForm();
 }
 
 function sendName() {
@@ -84,33 +76,45 @@ function showGreeting(message) {
 }
 
 (function () {
+    connect();
     document.querySelectorAll("form").forEach(form => form.addEventListener("submit", (ev) => ev.preventDefault()));
-    document.getElementById("connect").addEventListener("click", () => connect());
     document.getElementById("disconnect").addEventListener("click", () => disconnect());
     document.getElementById("send").addEventListener("click", () => sendName());
-    setConnected(false);
 })()
 
-async function ensureAuthenticated() {
-    jwtToken = await fetchJwtToken();
-    return jwtToken;
-}
+// async function ensureAuthenticated() {
+//     jwtToken = await fetchJwtToken();
+//     return jwtToken;
+// }
 
-async function fetchJwtToken() {
-    const response = await fetch("/api/auth/token");
+// async function fetchJwtToken(url) {
+//     const response = await fetch(url, {
+//         method: "POST",
+//         body: JSON.stringify({ username: "", password: ""}),
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//     });
 
-    if (response.status === 401) {
-        redirectToAuthForm();
-        throw new Error("Authentication required");
-    }
+//     if (response.status === 401) {
+//         redirectToAuthForm();
+//         throw new Error("Authentication required");
+//     }
 
-    if (!response.ok) {
-        throw new Error("Unable to retrieve JWT token");
-    }
+//     if (!response.ok) {
+//         throw new Error("Unable to retrieve JWT token");
+//     }
 
-    const payload = await response.json();
-    return payload.token;
-}
+//     const payload = await response.json();
+//     return payload.token;
+// }
+
+// async function signin(url) {
+//     const response = await fetch(url);
+
+//     console.log("Signin: ", response);
+
+// }
 
 async function loadMessages() {
     const response = await fetch("/api/messages", {
@@ -120,7 +124,7 @@ async function loadMessages() {
     });
 
     if (response.status === 401) {
-        redirectToAuthForm();
+        // redirectToAuthForm();
         return;
     }
 
