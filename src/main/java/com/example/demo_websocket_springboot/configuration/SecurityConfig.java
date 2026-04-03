@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .requestMatchers(
                     "/",
                     "/index.html",
-                    "/*.js",
+                    "/scripts/**",
                     "/auth-form",
                     "/api/auth/**",
                     "/chat-app/**",
