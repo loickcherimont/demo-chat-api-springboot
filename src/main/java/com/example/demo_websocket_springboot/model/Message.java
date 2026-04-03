@@ -25,7 +25,7 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; 
 
-    private String name;
+    private String content;
 
     @CreationTimestamp
     @Column(name = "send_at", updatable = false)

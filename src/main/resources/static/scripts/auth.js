@@ -4,6 +4,8 @@
  * Redirect after authentication to main chat app
  */
 
+import { redirectToAuthForm } from "./utils.js";
+
 document
     .getElementById("authForm")
     .addEventListener("submit", handleSubmit)

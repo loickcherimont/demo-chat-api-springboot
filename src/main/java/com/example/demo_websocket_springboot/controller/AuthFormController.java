@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.example.demo_websocket_springboot.model.AuthForm;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -13,77 +12,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AuthFormController {
 
-    // private static final String AUTH_URL = "http://localhost:8080/api/auth/signin";
-
-    // private final JwtService jwtService;
-    // private final UserDetailsService userDetailsService;
-
-    // @GetMapping("/")
-    // public String home(HttpSession session) {
-    //     return getValidSessionToken(session).isPresent() ? "forward:/index.html" : "redirect:/auth-form";
-    // }
-
     @GetMapping("/auth-form")
-    public String form(Model model, HttpSession session) {
-        // if (getValidSessionToken(session).isPresent()) {
-        //     return "redirect:/";
-        // }
-
+    public String form(Model model) {
         model.addAttribute("authForm", new AuthForm());
         return "auth-form";
     }
-
-    // @PostMapping("/auth-form")
-    // public String submit(@ModelAttribute AuthForm authForm, Model model, HttpSession session) {
-    //     RestTemplate restTemplate = new RestTemplate();
-
-    //     HttpHeaders headers = new HttpHeaders();
-    //     headers.setContentType(MediaType.APPLICATION_JSON);
-
-    //     HttpEntity<AuthForm> request = new HttpEntity<>(authForm, headers);
-
-    //     try {
-    //         SigninResponseDto response = restTemplate.postForObject(AUTH_URL, request, SigninResponseDto.class);
-
-    //         if (response == null || response.token() == null || response.token().isBlank()) {
-    //             throw new IllegalStateException("JWT token missing from signin response");
-    //         }
-
-    //         session.setAttribute("JWT_TOKEN", response.token());
-    //         return "redirect:/";
-    //     } catch (Exception ex) {
-    //         log.warn("Authentication failed from form: {}", ex.getMessage());
-    //         model.addAttribute("authForm", authForm);
-    //         model.addAttribute("error", "Nom d'utilisateur ou mot de passe incorrect");
-    //         return "auth-form";
-    //     }
-    // }
-
-    // private Optional<String> getValidSessionToken(HttpSession session) {
-    //     Object sessionToken = session.getAttribute("JWT_TOKEN");
-
-    //     if (!(sessionToken instanceof String token) || token.isBlank()) {
-    //         return Optional.empty();
-    //     }
-
-    //     String userEmail = jwtService.extractUsername(token);
-
-    //     if (userEmail == null) {
-    //         session.removeAttribute("JWT_TOKEN");
-    //         return Optional.empty();
-    //     }
-
-    //     try {
-    //         UserDetails userDetails = userDetailsService.loadUserByUsername(userEmail);
-
-    //         if (jwtService.isTokenValid(token, userDetails)) {
-    //             return Optional.of(token);
-    //         }
-    //     } catch (Exception ex) {
-    //         log.warn("Invalid JWT token found in session: {}", ex.getMessage());
-    //     }
-
-    //     session.removeAttribute("JWT_TOKEN");
-    //     return Optional.empty();
-    // }
 }
