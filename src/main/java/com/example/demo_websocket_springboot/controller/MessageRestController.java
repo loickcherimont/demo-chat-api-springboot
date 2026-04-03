@@ -7,11 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo_websocket_springboot.model.Greeting;
+import com.example.demo_websocket_springboot.model.Message;
 import com.example.demo_websocket_springboot.services.MessageService;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * REST controller for history of messages
+ */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/messages")
@@ -20,7 +23,7 @@ public class MessageRestController {
     private final MessageService messageService;
 
     @GetMapping
-    public ResponseEntity<List<Greeting>> getAllGreetings() {
-        return ResponseEntity.ok(messageService.getAllGreetings());
+    public ResponseEntity<List<Message>> getAllSanitizedMessages() {
+        return ResponseEntity.ok(messageService.getAllSanitizedMessages());
     } 
 }
