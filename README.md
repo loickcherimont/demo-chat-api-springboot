@@ -4,7 +4,7 @@
 
 **Real-Time Chat Backend API** is a secure application based on JWT authentication. Spring Boot, STOMP, and WebSocket.
 
-![Preview](./github/preview.png 'Aperçu du site')
+<!-- ![Preview](./github/preview.png 'Aperçu du site') -->
 
 ## 🖥️ Tech stack
 
