@@ -1,5 +1,16 @@
-export function getFormatDateTime(date) {
-    return new Intl.DateTimeFormat("en-GB", {
+/** SERVICES */
+export const isInvalidDate = (date) => isNaN(new Date(date));
+
+/**
+ * 
+ * Returns date in human readable format.
+ * 
+ * @param {Date} date 
+ * @param {string} local - Human language used to format date/time 
+ * @returns {Intl.DateTimeFormat} - Date/time in format MM/DD/YYYY, HH:MM
+ */
+export function getFormatDateTime(date, local="fr") {
+    return new Intl.DateTimeFormat(local, {
         dateStyle: "short",
         timeStyle: "short",
     }).format(date);
@@ -13,12 +24,12 @@ export function redirectToAuthForm() {
 
 /**
  * 
- * Get all messages from API
- * Useful for history
+ * Get all messages from database when user is authenticated
+ * Returns an array of Message (object)
  * 
  * @param {string} url - API url to get all messages 
  * @param {string} token - JWT token
- * @returns 
+ * @return {object[]}
  */
 export async function loadMessages(url, token) {
     const response = await fetch(url, {
@@ -36,16 +47,20 @@ export async function loadMessages(url, token) {
         throw new Error("Unable to fetch chat history");
     }
 
-    const listMessages = await response.json();
-    listMessages.forEach(listItemMessage => createMessageElement(listItemMessage.content));
+    return await response.json();
 }
 
+
+/** UI */
+/**
+ * 
+ * @param {object} body - Message object to format in UI component for chat 
+ */
 export function createMessageElement(body) {
     const { sendBy, content, sendAt } = body;
     const tr = document.createElement("tr");
     const td = document.createElement("td");
-    console.log(sendAt, getFormatDateTime(new Date(sendAt)));
-    td.innerHTML = `<span>${sendBy}</span><p>${content}</p><span>${getFormatDateTime(new Date(sendAt))}</span>`;
+    td.innerHTML = `<span>${sendBy}</span><p>${content}</p><span>${isInvalidDate(sendAt) ? "Date inconnue" : getFormatDateTime(new Date(sendAt))}</span>`;
     tr.appendChild(td);
     document.getElementById("messages").appendChild(tr);
 }
