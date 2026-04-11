@@ -11,6 +11,7 @@ document
     .addEventListener("submit", handleSubmit)
 
 async function handleSubmit(ev) {
+    console.log("Form Submit");
     ev.preventDefault();
 
     const formData = new FormData(ev.target);
@@ -36,6 +37,8 @@ async function fetchJwtToken(url, requestBody) {
             "Content-Type": "application/json",
         },
     });
+
+    console.log("foo");
 
     if (response.status === 401) {
         redirectToAuthForm();
