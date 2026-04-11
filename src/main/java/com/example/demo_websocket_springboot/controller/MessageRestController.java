@@ -8,19 +8,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo_websocket_springboot.model.Message;
-import com.example.demo_websocket_springboot.service.MessageService;
+import com.example.demo_websocket_springboot.services.MessageService;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * REST controller for history of messages
+ */
 @RestController
-@RequestMapping("/api/messages")
 @RequiredArgsConstructor
-public class RestMessageController {
+@RequestMapping("/api/messages")
+public class MessageRestController {
 
     private final MessageService messageService;
 
     @GetMapping
-    public ResponseEntity<List<Message>> getAllMessages() {
-        return ResponseEntity.ok(messageService.getAllMessages());
-    }
+    public ResponseEntity<List<Message>> getAllSanitizedMessages() {
+        return ResponseEntity.ok(messageService.getAllSanitizedMessages());
+    } 
 }
