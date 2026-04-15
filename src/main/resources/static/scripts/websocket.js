@@ -6,13 +6,6 @@ const wsProtocol = window.location.protocol === "https:" ? "wss" : "ws";
 const stompClient = new StompJs.Client({
     brokerURL: `${wsProtocol}://${window.location.host}/chat-app`,
     reconnectDelay: 5000,
-    // beforeConnect: async () => {
-    //     console.log("Token", jwtToken);
-    //     jwtToken = localStorage.getItem("CUSTOM_JWT_TOKEN");
-    //     stompClient.connectHeaders = {
-    //         Authorization: `Bearer ${jwtToken}`,
-    //     };
-    // },
     connectHeaders: { Authorization: `Bearer ${jwtToken}`, },
     onConnect: async () => {
         const listMessages = await loadMessages(`${window.location.origin}/api/messages`, jwtToken);
