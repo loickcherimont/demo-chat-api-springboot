@@ -1,12 +1,5 @@
--- Messages
--- INSERT INTO 
---     messages(content)
--- VALUES('Hello from PostgreSQL');
 
--- Users
--- Fake user passwords: 
--- - 'test123' for 'john.doe'
--- - 'user123' for 'jane.doe'
+-- todo: remove the hard-coded test passwords.
 INSERT INTO
     users(id, email, password, role)
 
