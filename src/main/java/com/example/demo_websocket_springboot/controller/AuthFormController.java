@@ -10,12 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class AuthFormController {
 
-    // @GetMapping("/auth-form")
-    // public String form(Model model) {
-    // model.addAttribute("authForm", new AuthForm());
-    // return "auth-form";
-    // }
-
     @GetMapping("/auth-form")
     public String form() {
         return "auth-form";

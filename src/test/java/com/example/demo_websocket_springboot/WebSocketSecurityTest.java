@@ -8,12 +8,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.messaging.converter.MappingJackson2MessageConverter;
 import org.springframework.messaging.simp.stomp.StompSessionHandlerAdapter;
 import org.springframework.web.socket.client.standard.StandardWebSocketClient;
 import org.springframework.web.socket.messaging.WebSocketStompClient;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, properties = "spring.sql.init.mode=never")
 class WebSocketSecurityTest {
@@ -27,12 +24,6 @@ class WebSocketSecurityTest {
     void setup() {
         stompClient = new WebSocketStompClient(
                 new StandardWebSocketClient());
-
-        // stompClient.setMessageConverter(
-        // MappingJackson2MessageConverter converter = new
-        // MappingJackson2MessageConverter();
-        // converter.setObjectMapper(new ObjectMapper());
-        // );
     }
 
     @Test
