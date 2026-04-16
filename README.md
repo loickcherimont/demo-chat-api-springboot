@@ -28,6 +28,25 @@ cd springboot-jwt-secure-chat-api
 
 ![Preview](./github/preview.png)
 
+## 👤 Test Accounts
+
+Test accounts are available to make evaluation easier:
+
+### User 1
+- Email: john.doe  
+- Password: test123  
+
+### User 2
+- Email: jane.doe  
+- Password: user123
+
+> [!IMPORTANT]
+> The application is hosted on a free Render environment.
+> On the first request after a period of inactivity, startup may take up to **30–50 seconds**.
+> Please be patient if the API takes a few moments to respond initially.
+
+Live API on : https://springboot-jwt-secure-chat-api.onrender.com/
+
 ## 🔑 License
 
 This application is powered by **Loick CHERIMONT**
