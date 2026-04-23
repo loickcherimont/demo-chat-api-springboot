@@ -3,7 +3,11 @@
 
 <head>
     <title>Hello WebSocket</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- CDN for Boostrap (CSS) -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+
+    <!-- Local Bootstrap (CSS) -->
+    <link href="/scripts/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body class="bg-light">
@@ -40,7 +44,8 @@
 
                             <div class="col-md-9">
 
-                                <input type="text" id="content" class="form-control" placeholder="Enter your message...">
+                                <input type="text" id="content" class="form-control"
+                                    placeholder="Enter your message...">
 
                             </div>
 
@@ -78,9 +83,16 @@
 
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+    <!-- CDNs Bootstrap (JS)/Stomp/SockJS for Web  -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script> -->
+
+    <!-- Bootstrap (JS)/Stomp/SockJS - local dependencies -->
+    <script src="/scripts/vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/scripts/vendor/sockjs.min.js"></script>
+    <script src="/scripts/vendor/stomp.umd.min.js"></script>
+
     <script src="/scripts/app.js" type="module"></script>
 
 </body>
