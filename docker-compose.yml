@@ -1,6 +1,8 @@
 services:
   app:
     image: 'chat-app:latest'
+    env_file:
+      - .env
     build:
       context: .
     container_name: app
