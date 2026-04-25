@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<html xmlns:th="https://www.thymeleaf.org" lang="fr">
 
 <head>
-    <title>AuthForm</title>
+    <title>🔐 Chat App | Se connecter</title>
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,70 +15,44 @@
 </head>
 
 <body class="bg-light">
-
     <div class="container py-5">
-
         <div class="row justify-content-center">
-
             <div class="col-md-6 col-lg-5">
-
                 <div class="card shadow-sm rounded-4">
-
                     <div class="card-body">
-
                         <h3 class="text-center mb-4">
-                            🔐 Authentification
+                            🔐 Se connecter
                         </h3>
-
-                        <p th:if="${error}" th:text="${error}" class="alert alert-danger text-center">
-                        </p>
+                        <!-- <p th:if="${error}" th:text="${error}" class="alert alert-danger text-center"></p> -->
 
                         <form method="POST" id="authForm" class="d-grid gap-3">
-
                             <div>
-
                                 <label class="form-label">
-                                    Username
+                                    Nom d'utilisateur
                                 </label>
-
                                 <input type="text" name="username" class="form-control" required />
-
                             </div>
-
                             <div>
-
                                 <label class="form-label">
-                                    Password
+                                    Mot de passe
                                 </label>
-
                                 <input type="password" name="password" class="form-control" required />
-
                             </div>
-
                             <div class="d-grid gap-2 mt-2">
-
                                 <button type="submit" class="btn btn-primary">
                                     Se connecter
                                 </button>
 
-                                <button type="reset" class="btn btn-outline-secondary">
+                                <!-- <button type="reset" class="btn btn-outline-secondary">
                                     Reset
-                                </button>
-
+                                </button> -->
                             </div>
-
                         </form>
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
     <script th:src="@{/scripts/auth.js}" type="module"></script>
 
     <!-- CDNs Bootstrap (JS)/Stomp/SockJS for Web  -->
