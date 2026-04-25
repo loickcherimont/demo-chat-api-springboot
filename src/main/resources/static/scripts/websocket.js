@@ -46,6 +46,7 @@ export function sendMessage() {
     const content = document.getElementById("content").value.trim();
 
     if (!content || !stompClient.connected) {
+        alert("Veuillez entrer votre message");
         return;
     }
 
