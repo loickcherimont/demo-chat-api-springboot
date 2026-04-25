@@ -11,20 +11,22 @@ document
     .addEventListener("submit", handleSubmit)
 
 async function handleSubmit(ev) {
-    console.log("Form Submit");
     ev.preventDefault();
 
     const formData = new FormData(ev.target);
 
-    const requestDto = { username: formData.get("username"), password: formData.get("password")};
+    const requestDto = { username: formData.get("username"), password: formData.get("password") };
 
     const token = await fetchJwtToken("/api/auth/signin", requestDto);
 
     if (!token) {
-        throw new Error("Token is missing");
+        console.error("Token is missing");
+        ev.target.reset();
+        return;
     }
 
     localStorage.setItem("CUSTOM_JWT_TOKEN", token);
+    
 
     window.location.href = "/";
 }
@@ -38,14 +40,18 @@ async function fetchJwtToken(url, requestBody) {
         },
     });
 
-    console.log("foo");
-
     if (response.status === 401) {
         redirectToAuthForm();
-        throw new Error("Authentication required");
+        const ex = await response.json();
+        alert(ex.message)
+        console.error(ex);
+        return;
     }
 
     if (!response.ok) {
+        const ex = await response.json();
+        alert(ex.message)
+        console.error(ex);
         throw new Error("Unable to retrieve JWT token");
     }
 
