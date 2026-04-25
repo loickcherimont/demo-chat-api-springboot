@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo_websocket_springboot.dto.SigninRequestDto;
 import com.example.demo_websocket_springboot.dto.SigninResponseDto;
+import com.example.demo_websocket_springboot.exceptions.InvalidCredentialsException;
 import com.example.demo_websocket_springboot.model.User;
 
 import lombok.RequiredArgsConstructor;
@@ -23,12 +24,8 @@ public class AuthService {
 
         User user = userService.findByUsername(dto.username());
 
-        if (user == null) {
-            throw new IllegalStateException("Invalid credentials: user not found");
-        }
-
-        if (!passwordEncoder.matches(dto.password(), user.getPassword())) {
-            throw new IllegalStateException("Invalid credentials: wrong password");
+        if (user == null || !passwordEncoder.matches(dto.password(), user.getPassword())) {
+            throw new InvalidCredentialsException("Nom d'utilisateur ou mot de passe incorrect");
         }
 
         String token = jwtService.generateToken(user);
