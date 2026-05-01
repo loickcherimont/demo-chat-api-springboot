@@ -55,18 +55,36 @@ You will see a screen similar as the next picture.
 > [!IMPORTANT]  
 > Use test accounts to see quickly how to the application runs.  
 
-### User 1
-- Email: john.doe  
-- Password: test123  
+### Sample data (users)
 
-### User 2
-- Email: jane.doe  
-- Password: user123
+| ID  | Username | Password |
+| --- | -------- | -------- |
+| 1   | john.doe | test123  |
+| 2   | jane.doe | user123  |
+
 
 > [!IMPORTANT]  
 > If you don't use the previous sample, JavaScript will enforce you to complete input fields.  
 
-![Username field not completed](./github/auth-form-html5-not-filled-required-inputs-message.png 'Message for not filled username field | Real-Time Chat Backend API')
+![Message and screen for username field not completed](./github/auth-form-html5-not-filled-required-inputs-message.png 'Message and screen for username field not completed | Real-Time Chat Backend API')
+
+### Authentication Form | Invalid credentials
+
+Actually, if you use unknown users (out of the previous table) or wrong login data, you will encounter a JavaScript error message about `invalid credentials`.  
+
+![Message and screen for invalid credentials](./github/invalid-credentials-screen.png 'Message and screen for invalid credentials | Real-Time Chat Backend API')
+
+### Real-Time Chat Backend API | Blank message
+
+Actually, if you try to send blank message, you will encounter a JavaScript error message about `Complete the message field`.  
+
+![Message and screen for blank message](./github/empty-message.png 'Message and screen for blank message | Real-Time Chat Backend API')
+
+### Normal flow
+
+Else, if you connect to the application using the previous 2 users, you'll have a real time exchange.
+
+![Exchange between 2 fake users](./github/example-exchange.png 'Exchange between 2 fake users | Real-Time Chat Backend API')
 
 > [!IMPORTANT]  
 > The application is hosted on a free Render environment.  
