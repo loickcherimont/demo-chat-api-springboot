@@ -2,19 +2,36 @@
 
 ## 🌱 About
 
-**Real-Time Chat Backend API** is a secure application based on JWT authentication. Spring Boot, STOMP, and WebSocket.
+This is a secure **Real-Time Chat Backend API** based on JWT authentication made with Spring Boot and JavaScript.
 
 ## 🖥️ Tech stack
 
 - **Backend**  : Java 21, Spring Boot, Spring Security, Websocket / STOMP
 - **Frontend** : JavaScript ES6, StompJS, Bootstrap 5
 
+### Prerequisites
+
+Before project running, you'll need to create 2 files at the root :
+
+- `.env`
+- `.env.properties`
+
+Each files must have as content : 
+
+```bash
+SECRET_KEY=<VALUE>
+```
+
+> [!IMPORTANT]
+> Generate a random key using `openssl rand -base64 64`.
+> Replace `<VALUE>` with the result of the previous command.
+
 ## 🚀 Setup
 
 1. Clone the repository using :
 
 ```bash
-https://github.com/loickcherimont/springboot-jwt-secure-chat-api.git
+git clone https://www.github.com/loickcherimont/springboot-jwt-secure-chat-api.git
 ```
 
 2. Go in the projet and run it :
