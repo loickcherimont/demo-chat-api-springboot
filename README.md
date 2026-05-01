@@ -66,7 +66,7 @@ You will see a screen similar as the next picture.
 > [!IMPORTANT]  
 > If you don't use the previous sample, JavaScript will enforce you to complete input fields.  
 
-![Username field not completed](./github/auth-form-html5-not-filled-required-inputs-message 'Message for not filled username field | Real-Time Chat Backend API')
+![Username field not completed](./github/auth-form-html5-not-filled-required-inputs-message.png 'Message for not filled username field | Real-Time Chat Backend API')
 
 > [!IMPORTANT]  
 > The application is hosted on a free Render environment.  
