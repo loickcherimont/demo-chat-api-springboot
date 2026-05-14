@@ -94,10 +94,7 @@ Else, if you connect to the application using the previous 2 users, you'll have 
 
 Render Live API on [https://springboot-jwt-secure-chat-api.onrender.com/auth-form](https://springboot-jwt-secure-chat-api.onrender.com/auth-form 'Render Live API | Real-Time Chat Backend API')
 
+
 ## 🔑 License
 
-This application is powered by **Loick CHERIMONT**
-
----
-
-<div align="center">&copy; 2026 x Loick CHERIMONT</div>
+<div align="center">Copyright &copy; 2026 | Loick CHERIMONT | All Rights Reserved.</div>
